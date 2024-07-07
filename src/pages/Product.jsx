@@ -19,7 +19,7 @@ const Product = () => {
     height: '80vh',
     backgroundColor: theme.palette.primary.light,
     backgroundImage: `url(${Hero})`,
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     overflow: 'hidden',
   }));
