@@ -13,7 +13,6 @@ const Navbar = () => {
     padding: '10px 20px'
   })
   
-
   const Menu = styled(Box)(({theme}) =>({
     fontSize: '15px',
     color: theme.palette.store_black.main,
@@ -24,7 +23,7 @@ const Navbar = () => {
     [theme.breakpoints.down('md')]:{
       display: 'none'
     }
-  }))
+  }));
 
   const ButtonSX = {
     borderColor: theme.palette.primary.main,
