@@ -1,18 +1,22 @@
 import React from 'react'
 // mui imports
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
+
+// Components
+import ProductCard from '../components/ProductCard';
+import { Products } from '../components/ProductsData'
 
 // Header-Image
 import Hero from '../assets/img/Rectangle 2.png'
-
+import lip from '../assets/img/lip/lip-1.png'
 const Product = () => {
 
     
   const Header = styled(Box)(({theme}) =>({
     position: 'relative',
     width: '100%',
-    height: '100vh',
+    height: '80vh',
     backgroundColor: theme.palette.primary.light,
     backgroundImage: `url(${Hero})`,
     backgroundSize: 'contain',
@@ -53,6 +57,41 @@ const Product = () => {
         </Grid>
       </ContentBox>
     </Header>
+    {/* Product Listing */}
+    <Container>
+        {Products.map((category)=>{
+            return(
+                <Grid key={category.category} container spacing={4}>
+                    {/* Title */}
+                    <Grid item xs={12}>
+                        <Typography variant='h3'>
+                            Products
+                        </Typography>
+                    </Grid>
+                    {/* lips */}
+                    <Grid item xs={12} >
+                        <Typography paddingY={3} variant='h4'>
+                                Lips
+                        </Typography>
+                        <Grid container spacing={4}>
+                            {category.items.map((data, index) =>{
+                                return(
+                                    <Grid key={index} item xs={3}>
+                                        <ProductCard 
+                                            title={data.name}
+                                            image={lip}
+                                            price={data.price}
+                                            />
+                                    </Grid>
+                                )
+                            })};
+                        </Grid>
+                    </Grid>
+                </Grid>
+            )
+        })}
+        
+    </Container>
     </>
   )
 }
