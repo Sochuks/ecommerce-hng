@@ -9,7 +9,7 @@ import { Products } from '../components/ProductsData'
 
 // Header-Image
 import Hero from '../assets/img/Rectangle 2.png'
-import lip from '../assets/img/lip/lip-1.png'
+
 const Product = () => {
 
     
@@ -79,7 +79,7 @@ const Product = () => {
                                     <Grid key={index} item xs={3}>
                                         <ProductCard 
                                             title={data.name}
-                                            image={lip}
+                                            image={data.image}
                                             price={data.price}
                                             />
                                     </Grid>
