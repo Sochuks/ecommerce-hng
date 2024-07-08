@@ -5,10 +5,15 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 
 // Components
 import ProductCard from '../components/ProductCard';
-import { Products } from '../components/ProductsData'
 
 // Header-Image
 import Hero from '../assets/img/Rectangle 2.png'
+// Product Images
+import lips1 from '../assets/img/lip/lip-1.png';
+import lips2 from '../assets/img/lip/lip-2.png';
+import lips3 from '../assets/img/lip/lip-3.png';
+import lips4 from '../assets/img/lip/lip-4.png';
+
 
 // Product List
 export const Products = [
@@ -17,14 +22,14 @@ export const Products = [
     items: [
       {
         id: 1,
-        image: '../assets/img/lip/lip-1.png',
+        image: lips1,
         name: 'Flormar Healthy Glow Dewy Lip Lacquer 03 Lively 6.5ml',
         price: '20,422.41',
-        content:'',
+        content:'stew',
       },
       {
         id: 2,
-        image: '../assets/img/lip/lip-2.png',
+        image: lips2,
         name: 'Dewy Lip Lacquer 03 Lively 6.5ml',
         price: '32,865.32',
         content:
@@ -32,7 +37,7 @@ export const Products = [
       },
       {
           id: 3,
-          image: '../assets/img/lip/lip-3.png',
+          image: lips3,
           name: 'Lacquer 03 Lively 6.5ml',
           price: '105,499.41',
           content:
@@ -40,7 +45,109 @@ export const Products = [
         },
         {
           id: 4,
-          image: '../assets/img/lip/lip-4.png',
+          image: lips4,
+          name: 'Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+    ],
+    category: 'foundation',
+    items: [
+      {
+        id: 1,
+        image: lips1,
+        name: 'Flormar Healthy Glow Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '20,422.41',
+        content:'stew',
+      },
+      {
+        id: 2,
+        image: lips2,
+        name: 'Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '32,865.32',
+        content:
+          'Amazing product quality and great customer service. Highly recommend!',
+      },
+      {
+          id: 3,
+          image: lips3,
+          name: 'Lacquer 03 Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+        {
+          id: 4,
+          image: lips4,
+          name: 'Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+    ],
+    category: 'powder',
+    items: [
+      {
+        id: 1,
+        image: lips1,
+        name: 'Flormar Healthy Glow Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '20,422.41',
+        content:'stew',
+      },
+      {
+        id: 2,
+        image: lips2,
+        name: 'Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '32,865.32',
+        content:
+          'Amazing product quality and great customer service. Highly recommend!',
+      },
+      {
+          id: 3,
+          image: lips3,
+          name: 'Lacquer 03 Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+        {
+          id: 4,
+          image: lips4,
+          name: 'Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+    ],
+    category: 'eyeshadow',
+    items: [
+      {
+        id: 1,
+        image: lips1,
+        name: 'Flormar Healthy Glow Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '20,422.41',
+        content:'stew',
+      },
+      {
+        id: 2,
+        image: lips2,
+        name: 'Dewy Lip Lacquer 03 Lively 6.5ml',
+        price: '32,865.32',
+        content:
+          'Amazing product quality and great customer service. Highly recommend!',
+      },
+      {
+          id: 3,
+          image: lips3,
+          name: 'Lacquer 03 Lively 6.5ml',
+          price: '105,499.41',
+          content:
+            'Amazing product quality and great customer service. Highly recommend!',
+        },
+        {
+          id: 4,
+          image: lips4,
           name: 'Lively 6.5ml',
           price: '105,499.41',
           content:
@@ -116,7 +223,7 @@ const Product = () => {
                         <Grid container spacing={4}>
                             {category.items.map((data, index) =>{
                                 return(
-                                    <Grid key={index} item xs={3}>
+                                    <Grid key={index} item xs={12} md={6} lg={3}>
                                         <ProductCard 
                                             title={data.name}
                                             image={data.image}
