@@ -47,7 +47,7 @@ const checkoutData = [
   },
 ]
 
-const CheckoutItem = ({title, image, price, total, color, amount}) =>{
+const CheckoutItem = ({title, image, price, total, amount}) =>{
   const theme = useTheme();
   return(
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -56,25 +56,32 @@ const CheckoutItem = ({title, image, price, total, color, amount}) =>{
         <div className='bg-[#FFD7BE] p-6'>
             <img src={image} alt="" className='w-32 h-32' />
         </div>
-        <div className='flex-column pt-3 space-y-2'>
-          <p className='max-w-52 font-medium text-md'>{title}</p>
-          <p>Color <span className={`rounded-full bg-[${color}] px-3 py-1`}></span> </p>
-          <FaRegTrashAlt />
+        {/* Title & price */}
+        <div className='flex-column pt-3 space-y-6 items-center'>
+          <p className='font-medium'>{title}</p>
+          <Stack direction='row' justifyContent='space-between'>
+             <Box>
+              <p>Price</p>
+              <p className='font-semibold'>{price}</p>
+            </Box>
+            <Box>
+            <p>Total</p>
+              <p className='font-semibold'>{total}</p>
+            </Box>
+          </Stack>
         </div>
+
       </Box>
-      <Box>
-        <p>Price</p>
-        <p className='font-semibold'>{price}</p>
-      </Box>
-      <Box className="flex items-center justify-between gap-3">
-        <a className='cursor-pointer'><FiMinusCircle /></a>
-        <p>{amount}</p>
-        <a className='cursor-pointer'><FiPlusCircle /></a>
-      </Box>
-      <Box>
-      <p>Total</p>
-        <p className='font-semibold'>{total}</p>
-      </Box>
+      {/* Amount & delete */}
+     <Stack spacing={3} justifyContent='center' alignItems='center'>
+        <Box className="flex items-center justify-between gap-3">
+            <a className='cursor-pointer'><FiMinusCircle /></a>
+            <p>{amount}</p>
+            <a className='cursor-pointer'><FiPlusCircle /></a>
+          </Box>
+          <FaRegTrashAlt />
+     </Stack>
+      
     </Stack>
   )
 }
@@ -83,7 +90,6 @@ CheckoutItem.propTypes = {
   title: PropTypes.string,
   price: PropTypes.string,
   total: PropTypes.string,
-  color: PropTypes.string,
   amount: PropTypes.string,
   image: PropTypes.string
 };
@@ -101,49 +107,35 @@ const Checkout = () => {
   }
 
 
-  const Header = styled(Box)(({ theme }) => ({
-    position: 'relative',
-    width: '100%',
-    height: '70vh',
-    backgroundColor: theme.palette.primary.light,
-    backgroundImage: `url(${CheckoutHero})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    overflow: 'hidden',
-    display: 'flex',
-    alignItems: 'center',
-  }));
+  
 
   return (
     <>
-      {/*Header*/}
-      <Header>
-        <Grid container alignItems="center">
-          <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap:'30px' }}>
-            <Typography textAlign='left' variant='h1' sx={headerSX}>Make Purchase Now</Typography>
-            {/* Search Bar */}
-            <div className="w-full max-w-lg" >
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="w-8 h-8 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round"
-                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
-                    </path>
-                  </svg>
-                </div>
-
-                <form action="#" method="GET">
-                  <input type="search" name="search" placeholder="Search Cart" className="p-4 pl-14 text-lg text-gray-600 rounded-3xl w-full border border-gray-600" />
-                </form>
+    <Container>
+      {/* Heading */}
+      <Typography textAlign='center' variant='h4' sx={{mt:10, mb:8}}>Delivery Information</Typography>
+      {/*Form*/}
+      <Grid container>
+        <Grid item xs={12}>
+          <form>
+            <Stack direction='row' justifyContent='space-between'>
+              <div className='flex flex-col'>
+                <label htmlFor="name">Full Name</label>
+                <input className='border border-slate-500' type="text" placeholder='Name' id='name' />
               </div>
-            </div>
-          </Grid>
+              <div>
+                <label htmlFor="tel">Full Name</label>
+                <input className='border border-slate-500' type="text" placeholder='Name' id='tel' />
+              </div>
+            </Stack>
+          </form>
+            
         </Grid>
-      </Header>
+      </Grid>
+      
 
       {/* checkout contents */}
-      <Container>
+      
         {/* Heading */}
         <Typography textAlign='center' variant='h4' sx={{mt:10, mb:8}}>Shopping Cart</Typography>
           <Grid container spacing={3}>

@@ -59,7 +59,7 @@ const CartItem = ({title, image, price, total, color, amount}) =>{
         </div>
         <div className='flex-column pt-3 space-y-2'>
           <p className='max-w-52 font-medium text-md'>{title}</p>
-          <p>Color <span className={`rounded-full bg-[${color}] px-3 py-1`}></span> </p>
+          <p className='flex items-center gap-3'>Color <span style={{ backgroundColor: color, width: '16px', height: '16px', display: 'inline-block', borderRadius: '50%' }} ></span> </p>
           <FaRegTrashAlt />
         </div>
       </Box>
