@@ -202,7 +202,8 @@ const Product = () => {
   }));
 
   const HeaderSX ={
-    fontSize: '3.5rem',
+    fontSize: {xs:'2.5rem', md:'3.5rem'},
+    textAlign:{xs:'center', md:'left'},
     fontWeight: '500',
     maxWidth: '700px'
   }
@@ -227,7 +228,7 @@ const Product = () => {
           </Grid> */}
           <Stack spacing={2} sx={{marginLeft:{xs:0, lg:5}}} >
           <Typography variant="h2" sx={HeaderSX}>Start <br />Your Beauty Journey<br /> with <span className='text-[#EC5766]'>Glamazone</span> </Typography>
-          <Typography variant="caption1" sx={{maxWidth: '400px', fontSize:'20px', lineHeight: '30px'}} >
+          <Typography variant="caption1" sx={{maxWidth: '400px', fontSize:'20px', lineHeight: '30px', textAlign:{xs:'center', lg:'left'}}} >
             Explore our collections, indulge in some self-care, and embrace your inner glam! We can't wait to be a part of your beauty story. 
           </Typography>
           {/* Search Bar */}
