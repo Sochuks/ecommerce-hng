@@ -46,10 +46,9 @@ const Navbar = () => {
                     <Stack direction='row'
                            divider={<Divider orientation="vertical" flexItem />}
                            spacing={2}>
-                        <Link to="#">Home</Link>
-                        <Link to="#">About Us</Link>
-                        <Link to="#">Our Products</Link>
-                        <Link to="#">Contact Us</Link>
+                        <Link to="/">Product</Link>
+                        <Link to="/cart">Cart</Link>
+                        <Link to="/checkout">Checkout</Link>
                     </Stack>
                   </Menu>
                   {/* Buttons */}
