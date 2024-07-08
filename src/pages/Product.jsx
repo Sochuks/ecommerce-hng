@@ -205,11 +205,8 @@ const Product = () => {
     fontSize: {xs:'2.5rem', md:'3.5rem'},
     textAlign:{xs:'center', md:'left'},
     fontWeight: '500',
-    maxWidth: '700px'
-  }
-
-  const logo={
-    color: '#EC5766'
+    maxWidth: '700px',
+    color: '#151515'
   }
 
   return (

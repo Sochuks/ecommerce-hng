@@ -3,14 +3,18 @@ import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, Button, Divider, Stack, Toolbar} from '@mui/material'
 import { Link } from 'react-router-dom';
 
+// Lipstick
+import Lipstick from '../assets/img/icons8-lipstick-96.png'
+
 
 const Navbar = () => {
   const theme = useTheme();
 
   const StoreAppBar = styled(AppBar)({
     position: 'relative',
-    backgroundColor: theme.palette.secondary.main,
-    padding: '10px 20px'
+    backgroundColor: theme.palette.primary.light,
+    padding: '10px 20px',
+    boxShadow: 'none'
   })
   
   const Menu = styled(Box)(({theme}) =>({
@@ -25,6 +29,12 @@ const Navbar = () => {
     }
   }));
 
+  const Logo = styled(Box)(({theme}) =>({
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '30px',
+  }));
+
   const ButtonSX = {
     borderColor: theme.palette.primary.main,
     border: '1px solid',
@@ -36,19 +46,19 @@ const Navbar = () => {
       <StoreAppBar>
           <Toolbar sx={{alignItems:'center', justifyContent:'space-between'}}  >
               {/* Logo */}
-              <Stack>
-                <span color={theme.palette.primary.main}>Glamour</span>
+              <Stack direction='row' alignItems='center'>
+                <img src={Lipstick} alt="logo" className='rotate-45 h-10 w-10' />
+                <span className='logo'>Glamazone</span>
               </Stack>
               {/* Menu & Buttons */}
               <Stack direction='row' spacing={4} alignItems="center">
                   {/* Menu */}
                   <Menu>
                     <Stack direction='row'
-                           divider={<Divider orientation="vertical" flexItem />}
                            spacing={2}>
-                        <Link to="/">Product</Link>
-                        <Link to="/cart">Cart</Link>
-                        <Link to="/checkout">Checkout</Link>
+                        <Link className='nav-link' to="/">Product</Link>
+                        <Link className='nav-link' to="/cart">Cart</Link>
+                        <Link className='nav-link' to="/checkout">Checkout</Link>
                     </Stack>
                   </Menu>
                   {/* Buttons */}
