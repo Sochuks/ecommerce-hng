@@ -14,7 +14,7 @@ import cart3 from '../assets/img/checkout/checkout3.png';
 // Icons
 import { FiMinusCircle,FiPlusCircle  } from "react-icons/fi";
 import { FaRegTrashAlt } from "react-icons/fa";
-;
+import { Link } from 'react-router-dom';
 
 
 // Data
@@ -51,7 +51,7 @@ const cartData = [
 const CartItem = ({title, image, price, total, color, amount}) =>{
   const theme = useTheme();
   return(
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+    <Stack direction={{xs:'column', md:'row'}} spacing={{xs:3, md:10 }} alignItems='center'>
       {/* image & Title */}
       <Box className="flex justify-between gap-4" >
         <div className='bg-[#FFD7BE] p-6'>
@@ -60,9 +60,10 @@ const CartItem = ({title, image, price, total, color, amount}) =>{
         <div className='flex-column pt-3 space-y-2'>
           <p className='max-w-52 font-medium text-md'>{title}</p>
           <p className='flex items-center gap-3'>Color <span style={{ backgroundColor: color, width: '16px', height: '16px', display: 'inline-block', borderRadius: '50%' }} ></span> </p>
-          <FaRegTrashAlt />
+          <FaRegTrashAlt className='cursor-pointer' />
         </div>
       </Box>
+      <Stack direction='row' spacing={{xs:5, md:20}} justifyContent='space-between'>
       <Box>
         <p>Price</p>
         <p className='font-semibold'>{price}</p>
@@ -76,6 +77,7 @@ const CartItem = ({title, image, price, total, color, amount}) =>{
       <p>Total</p>
         <p className='font-semibold'>{total}</p>
       </Box>
+      </Stack>
     </Stack>
   )
 }
@@ -108,11 +110,16 @@ const Cart = () => {
     height: '70vh',
     backgroundColor: theme.palette.primary.light,
     backgroundImage: `url(${CartHero})`,
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
+    backgroundPosition: 'center right',
     backgroundRepeat: 'no-repeat',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
+    [theme.breakpoints.down('lg')]: {
+      backgroundImage: 'none',
+      height: '40vh'
+  }
   }));
   return (
     <>
@@ -123,9 +130,9 @@ const Cart = () => {
             <Typography textAlign='left' variant='h1' sx={headerSX}>Make Purchase Now</Typography>
             {/* Search Bar */}
             <div className="w-full max-w-lg" >
-              <div className="relative">
+              <div className="relative ml-14 md:ml-0">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="w-8 h-8 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
@@ -133,8 +140,9 @@ const Cart = () => {
                   </svg>
                 </div>
 
-                <form action="#" method="GET">
-                  <input type="search" name="search" placeholder="Search Cart" className="p-4 pl-14 text-lg text-gray-600 rounded-3xl w-full border border-gray-600" />
+                <form>
+                  <input type="search" name="search" placeholder="Search Cart" 
+                  className="text-xl md:text-lg text-gray-600 border border-gray-600 rounded-3xl pl-10 p-2 md:pl-14 md:p-4 md:w-full w-72 " />
                 </form>
               </div>
             </div>
@@ -160,15 +168,15 @@ const Cart = () => {
                 </Grid>
               )
             })}
-             <Grid item xs={12} display='flex' justifyContent='flex-end'>
+             <Grid item xs={12} display='flex' marginRight={{xs:0, md:20}} marginY={10} justifyContent={{xs:'center', md:'flex-end'}}>
                 <Stack  spacing={2}>
                   <div className='flex justify-between gap-14'>
                     <p>Subtotal</p>
                     <p className='font-semibold'>N124,075.96</p>
                   </div>
-                  <Button sx={ButtonSX}>
+                  <Link to='/checkout' className='bg-[#EC5766] text-center p-4 rounded-3xl text-white'>
                     Checkout
-                </Button>
+                </Link>
                 </Stack>
              </Grid>
           </Grid>

@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import lip1 from '../assets/img/lip/lip-1.png'
 import { Button } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+
+// Icons
+import { FiMinusCircle,FiPlusCircle  } from "react-icons/fi";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({title, price, image}) => {
     const theme = useTheme();
@@ -30,7 +34,7 @@ const ProductCard = ({title, price, image}) => {
     };
 
     return (
-        <a href="#" className="group relative block overflow-hidden" style={cardStyle}>
+        <div className="group cursor-pointer relative block overflow-hidden" style={cardStyle}>
             <button
                 className="absolute end-4 top-4 z-10 rounded-full p-1.5 text-gray-900 transition hover:text-gray-900/75"
             >
@@ -58,8 +62,12 @@ const ProductCard = ({title, price, image}) => {
             <div className="relative border border-gray-100 bg-white p-6" style={contentStyle}>
                 <h3 className="mt-4 text-lg font-medium text-gray-900">{title}</h3>
                 <div className='flex items-center justify-between'>
-                    <p className="mt-1.5 text-sm text-gray-700">N{price}</p>
-                    <p className='text-slate-600'>Quantity</p>
+                    <p className="mt-1.5 text-sm text-gray-700 font-semibold">N{price}</p>
+                    <div className="flex items-center justify-between gap-3">
+                        <button className='cursor-pointer opacity-50'><FiMinusCircle /></button>
+                        <p>1</p>
+                        <button className='cursor-pointer'><FiPlusCircle /></button>
+                    </div>
                 </div>
                 <div className="flex gap-4 mt-4">
                     <span className="sr-only">Colors available</span>
@@ -68,13 +76,15 @@ const ProductCard = ({title, price, image}) => {
                     <button aria-label="Blue" className="p-2 border border-gray-200 dark:border-gray-500 rounded-full cursor-pointer bg-blue-500 dark:bg-blue-400"></button>
                     <button aria-label="Black" className="p-2 border border-gray-200 dark:border-gray-500 rounded-full cursor-pointer bg-gray-800 dark:bg-gray-600"></button>
                 </div>
-                <form className="mt-4">
-                    <Button sx={ButtonSX}>
+                <div className='mt-10'>
+                    <Link to='/cart' className='bg-[#EC5766] p-4 rounded-3xl text-white'>
                         Add to Cart
-                    </Button>
-                </form>
+                    </Link>
+                </div>
+                    
+                
             </div>
-        </a>
+        </div>
     )
 }
 

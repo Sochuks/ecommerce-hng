@@ -38,7 +38,8 @@ const Navbar = () => {
   const ButtonSX = {
     borderColor: theme.palette.primary.main,
     border: '1px solid',
-    borderRadius: '50px'
+    borderRadius: '50px',
+    display: 'none'
   }
   
   return (
@@ -50,8 +51,7 @@ const Navbar = () => {
                 <img src={Lipstick} alt="logo" className='rotate-45 h-10 w-10' />
                 <span className='logo'>Glamazone</span>
               </Stack>
-              {/* Menu & Buttons */}
-              <Stack direction='row' spacing={4} alignItems="center">
+
                   {/* Menu */}
                   <Menu>
                     <Stack direction='row'
@@ -61,12 +61,12 @@ const Navbar = () => {
                         <Link className='nav-link' to="/checkout">Checkout</Link>
                     </Stack>
                   </Menu>
+                  
                   {/* Buttons */}
                   <Stack direction='row' spacing={2}>
                     <Button sx={ButtonSX} >Shop Now</Button>
-                    <Button sx={ButtonSX} >Login</Button>
                   </Stack>
-              </Stack>
+              
           </Toolbar>
       </StoreAppBar>
     </>

@@ -13,6 +13,7 @@ import Checkout from './pages/Checkout';
 // ui-components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Confirm from './pages/Confirm';
 
 function App() {
   const Layout = () =>{
@@ -45,6 +46,10 @@ function App() {
         }
       ]
     },
+    {
+      path: "/confirm",
+      element: <Confirm />
+    }
    
   ]);
 

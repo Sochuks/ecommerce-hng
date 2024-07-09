@@ -7,7 +7,7 @@ import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import ProductCard from '../components/ProductCard';
 
 // Header-Image
-import Hero from '../assets/img/Rectangle 2.png';
+import angle from '../assets/img/angle.png';
 import HeroII from '../assets/img/shop-hero.png';
 
 // Product Images
@@ -256,9 +256,12 @@ const Product = () => {
               <Grid container spacing={4} key={category.category} >
                 {/* Category Items */}
                 <Grid item xs={12}>
-                  <Typography paddingY={3} variant="h4"  mt={3}>
-                    {category.category.charAt(0).toUpperCase() + category.category.slice(1)}
+                  <Stack direction='row' justifyContent='space-between' alignItems='center'>
+                  <Typography paddingY={3} variant="h4"  mt={3}> {category.category.charAt(0).toUpperCase() + category.category.slice(1)}
                   </Typography>
+                  <img src={angle} alt="angle" className='h-4 w-4' />
+                  </Stack>
+                
                   <Grid container spacing={4}>
                     {category.items.map((data, index) => (
                       <Grid key={index} item xs={12} md={6} lg={3}>
