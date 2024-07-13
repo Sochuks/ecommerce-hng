@@ -126,7 +126,7 @@ const Product = () => {
                     const price = product.current_price[0]?.NGN[0]?.toString() || 'Price Unavailable';
                     return (
                       <Grid key={index} item xs={12} md={6} lg={3}>
-                        <ProductCard title={product.name} image={product.photos[0]?.url} price={price} />
+                        <ProductCard id={product.id} title={product.name} image={product.photos[0]?.url} price={price} />
                       </Grid>
                     );
                   })}

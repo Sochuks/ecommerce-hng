@@ -8,8 +8,9 @@ import { useTheme } from '@mui/material/styles'
 import { FiMinusCircle,FiPlusCircle  } from "react-icons/fi";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Counter from './Counter';
 
-const ProductCard = ({title, price, image}) => {
+const ProductCard = ({id, title, price, image}) => {
     const theme = useTheme();
 
     const ButtonSX = {
@@ -63,11 +64,7 @@ const ProductCard = ({title, price, image}) => {
                 <h3 className="mt-4 text-lg font-medium text-gray-900">{title}</h3>
                 <div className='flex items-center justify-between'>
                     <p className="mt-1.5 text-sm text-gray-700 font-semibold">N{price}</p>
-                    <div className="flex items-center justify-between gap-3">
-                        <button className='cursor-pointer opacity-50'><FiMinusCircle /></button>
-                        <p>1</p>
-                        <button className='cursor-pointer'><FiPlusCircle /></button>
-                    </div>
+                    <Counter />
                 </div>
                 <div className="flex gap-4 mt-4">
                     <span className="sr-only">Colors available</span>
@@ -79,6 +76,9 @@ const ProductCard = ({title, price, image}) => {
                 <div className='mt-10'>
                     <Link to='/cart' className='btn-product'>
                         Add to Cart
+                    </Link>
+                    <Link to={`/product/${id}`} className='btn-product'>
+                        View
                     </Link>
                 </div>
                     

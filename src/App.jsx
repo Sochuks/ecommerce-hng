@@ -14,6 +14,7 @@ import Checkout from './pages/Checkout';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Confirm from './pages/Confirm';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   const Layout = () =>{
@@ -35,6 +36,10 @@ function App() {
         {
           path: "/",
           element: <Product />
+        },
+        {
+          path: "/product/:id",
+          element: <ProductDetails />
         },
         {
           path: "/cart",
