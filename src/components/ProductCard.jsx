@@ -77,7 +77,7 @@ const ProductCard = ({title, price, image}) => {
                     <button aria-label="Black" className="p-2 border border-gray-200 dark:border-gray-500 rounded-full cursor-pointer bg-gray-800 dark:bg-gray-600"></button>
                 </div>
                 <div className='mt-10'>
-                    <Link to='/cart' className='bg-[#EC5766] p-4 rounded-3xl text-white'>
+                    <Link to='/cart' className='btn-product'>
                         Add to Cart
                     </Link>
                 </div>

@@ -1,10 +1,13 @@
 import React from 'react'
 import { styled, useTheme } from '@mui/material/styles';
-import { AppBar, Box, Button, Divider, Stack, Toolbar} from '@mui/material'
+import { AppBar, Badge, Box, Button, Divider, Stack, Toolbar} from '@mui/material'
 import { Link } from 'react-router-dom';
 
 // Lipstick
 import Lipstick from '../assets/img/icons8-lipstick-96.png'
+
+// Icons
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 
 const Navbar = () => {
@@ -63,9 +66,9 @@ const Navbar = () => {
                   </Menu>
                   
                   {/* Buttons */}
-                  <Stack direction='row' spacing={2}>
-                    <Button sx={ButtonSX} >Shop Now</Button>
-                  </Stack>
+                  <Badge badgeContent={4} color="primary">
+                    <ShoppingCartOutlinedIcon color="action" />
+                  </Badge>
               
           </Toolbar>
       </StoreAppBar>

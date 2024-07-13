@@ -4,6 +4,12 @@
 /* ===Tailwindcss=== */
 @tailwind base;
 @tailwind components;
+
+.btn-product{
+  @apply bg-[#EC5766] p-4 rounded-3xl text-white
+}
+
+
 @tailwind utilities;
 
 *{
