@@ -14,30 +14,23 @@ import angle from '../assets/img/angle.png';
 import HeroII from '../assets/img/shop-hero.png';
 
 // Product Images
-import lips1 from '../assets/img/lip/lip-1.png';
-import lips2 from '../assets/img/lip/lip-2.png';
-import lips3 from '../assets/img/lip/lip-3.png';
-import lips4 from '../assets/img/lip/lip-4.png';
-
-import found1 from '../assets/img/foundation/foundation1.png';
-import found2 from '../assets/img/foundation/foundation2.png';
-import found3 from '../assets/img/foundation/foundation3.png';
-import found4 from '../assets/img/foundation/foundation4.png';
-
-import powder1 from '../assets/img/powder/powder1.png';
-import powder2 from '../assets/img/powder/powder2.png';
-import powder3 from '../assets/img/powder/powder3.png';
-import powder4 from '../assets/img/powder/powder4.png';
-
-import eye1 from '../assets/img/eye/eye1.png';
-import eye2 from '../assets/img/eye/eye2.png';
-import eye3 from '../assets/img/eye/eye3.png';
-import eye4 from '../assets/img/eye/eye4.png';
 
 
 
 const Product = () => {
   const { products, loading } = useContext(ProductContext);
+  console.log(products)
+
+  // Group products by categories
+  const groupedProducts = products.reduce((acc, product) => {
+    product.categories.forEach(category => {
+      if (!acc[category.name]) {
+        acc[category.name] = [];
+      }
+      acc[category.name].push(product);
+    });
+    return acc;
+  }, {});
 
   const Header = styled(Box)(({ theme }) => ({
     position: 'relative',
@@ -125,13 +118,21 @@ const Product = () => {
           {loading ? (
               <Typography textAlign="center" variant="h5" mt={5}>Loading</Typography>
           ):(
-            <Grid container spacing={4}>
-                {products.map((product, index) => (
-                  <Grid key={index} item xs={12} md={6} lg={3}>
-                    <ProductCard title={product.name} image={product.photos[0]?.url} price={product.price} />
-                  </Grid>
-                ))}
-            </Grid>
+            Object.keys(groupedProducts).map(category => (
+              <Box key={category} sx={{ marginTop: 5 }}>
+                <Typography variant="h4" sx={{ textAlign: 'left', textTransform: 'capitalize' }}>{category}</Typography>
+                <Grid container spacing={4} sx={{ marginTop: 2 }}>
+                  {groupedProducts[category].map((product, index) => {
+                    const price = product.current_price[0]?.NGN[0]?.toString() || 'Price Unavailable';
+                    return (
+                      <Grid key={index} item xs={12} md={6} lg={3}>
+                        <ProductCard title={product.name} image={product.photos[0]?.url} price={price} />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Box>
+            ))
           )}
       </Container>
     </>

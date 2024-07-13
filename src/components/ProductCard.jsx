@@ -90,7 +90,7 @@ const ProductCard = ({title, price, image}) => {
 
 ProductCard.propTypes = {
     title: PropTypes.string.isRequired,
-    price: PropTypes.string,
+    price: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired
 };
 
