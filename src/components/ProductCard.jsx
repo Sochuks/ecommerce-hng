@@ -54,7 +54,7 @@ const ProductCard = ({title, price, image}) => {
             </button>
 
             <img
-                src={image}
+                src={`https://api.timbu.cloud/images/${image}`}
                 alt=""
                 className="h-64 py-4 bg-[#FFD7BE] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
             />
@@ -90,7 +90,7 @@ const ProductCard = ({title, price, image}) => {
 
 ProductCard.propTypes = {
     title: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.string,
     image: PropTypes.string.isRequired
 };
 
