@@ -5,7 +5,7 @@ const apiUrl = "https://api.timbu.cloud/products?organization_id=2d806405cea942d
 
 export const ProductContext = createContext();
 
-const ProductProvider = ({children})=>{
+export const ProductProvider = ({children})=>{
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,5 +32,3 @@ const ProductProvider = ({children})=>{
           {children}  
         </ProductContext.Provider>
 }
-
-export default ProductProvider

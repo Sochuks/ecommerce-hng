@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Confirm from './pages/Confirm';
 import ProductDetails from './pages/ProductDetails';
+import SideBar from './components/SideBar';
 
 function App() {
   const Layout = () =>{
@@ -22,6 +23,7 @@ function App() {
       <>
         <Navbar />
         <Outlet />
+        <SideBar/>
         <Footer />
       </>
       
