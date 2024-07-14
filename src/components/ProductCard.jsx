@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types';
 
 import { Button } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+
+// Context
+import { CartContext } from '../contexts/CartContext';
 
 // Icons
 import { FiMinusCircle,FiPlusCircle  } from "react-icons/fi";
@@ -10,7 +13,11 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Counter from './Counter';
 
-const ProductCard = ({id, title, price, image}) => {
+
+
+const ProductCard = ({id, title, price, image, product}) => {
+    const { addToCart } = useContext(CartContext);
+
     const theme = useTheme();
 
     const ButtonSX = {
@@ -74,9 +81,9 @@ const ProductCard = ({id, title, price, image}) => {
                     <button aria-label="Black" className="p-2 border border-gray-200 dark:border-gray-500 rounded-full cursor-pointer bg-gray-800 dark:bg-gray-600"></button>
                 </div>
                 <div className='mt-10'>
-                    <Link to='/cart' className='btn-product'>
+                    <button onClick={()=> addToCart(product, id)} className='btn-product'>
                         Add to Cart
-                    </Link>
+                    </button>
                     <Link to={`/product/${id}`} className='btn-product'>
                         View
                     </Link>

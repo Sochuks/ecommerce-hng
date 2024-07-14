@@ -8,9 +8,12 @@ import { myTheme } from './components/Theme.jsx';
 
 import { ProductProvider } from './contexts/ProductContext.jsx';
 import { SideBarProvider } from './contexts/SideBarContext.jsx';
+import { CartProvider } from './contexts/CartContext.jsx';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <CartProvider>
     <SideBarProvider>
       <ProductProvider>
         <ThemeProvider theme={myTheme}>
@@ -18,5 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </ThemeProvider>
       </ProductProvider>
     </SideBarProvider>
+    </CartProvider>
   </React.StrictMode>
 );
