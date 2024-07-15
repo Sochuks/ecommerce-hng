@@ -1,10 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+// Cart COntext
+import { CartContext } from '../contexts/CartContext';
+
 
 // icons
 import {IoMdClose, IoMdRemove, IoMdAdd} from 'react-icons/io'
 
 const CartItem = ({item}) => {
+    const{removeFromCart, increaseAmount, decreaseAmount} = useContext(CartContext)
+
     const ImgUrl = 'https://api.timbu.cloud/images'
     const price = parseInt(item.current_price[0]?.NGN[0])
   return (
@@ -25,7 +30,7 @@ const CartItem = ({item}) => {
                     {/* Quantity */}
                     <div className='flex flex-1 max-w-[100px] items-center h-full border tex-priary' >
                         {/* Minus sign */}
-                        <div className='flex-1 flex justify-center items-center cursor-pointer'>
+                        <div onClick={()=>decreaseAmount(item.id)} className='flex-1 flex justify-center items-center cursor-pointer'>
                            <IoMdRemove /> 
                         </div>
                         {/* amount */}
@@ -33,7 +38,7 @@ const CartItem = ({item}) => {
                             {item.amount}
                         </div>
                         {/* plus sign */}
-                        <div className='flex-1 flex justify-center items-center cursor-pointer'>
+                        <div onClick={()=>increaseAmount(item.id)} className='flex-1 flex justify-center items-center cursor-pointer'>
                            <IoMdAdd /> 
                         </div>
                     </div>
@@ -48,9 +53,9 @@ const CartItem = ({item}) => {
                 
             </div>
             {/* Delete */}
-            <div>
+            <button onClick={()=>removeFromCart(item.id)}>
                 <IoMdClose className='text-gray-500 hover:text-red-500 transition-colors duration-300'/>
-            </div>
+            </button>
         
         </div>
     </div>

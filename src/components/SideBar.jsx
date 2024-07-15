@@ -1,17 +1,23 @@
 import { useContext } from 'react';
-// SideBar context
-import { SideBarContext } from '../contexts/SideBarContext';
-// Cart COntext
-import { CartContext } from '../contexts/CartContext';
+import { Stack } from '@mui/material';
 
+// context
+import { SideBarContext } from '../contexts/SideBarContext';
+import { CartContext } from '../contexts/CartContext';
+//components
+import CartItem from './CartItem';
 // Icons
 import {IoMdArrowForward} from 'react-icons/io'
-import CartItem from './CartItem';
-import { Stack } from '@mui/material';
+import {FiTrash2} from 'react-icons/fi'
+import { Link } from 'react-router-dom';
+
+
+
+
 
 const SideBar = () => {
     const { isOpen, handleClose } = useContext(SideBarContext);
-    const { cart } = useContext(CartContext);
+    const { cart, clearCart, total } = useContext(CartContext);
 
     return (
         <div className={`${isOpen ? 'right-0' : 'hidden'} w-full bg-white fixed top-0 h-full shadow-2xl 
@@ -30,6 +36,25 @@ const SideBar = () => {
                 {cart.map((item)=>{
                 return <CartItem item={item} key={item.id} />
                 })}
+            </Stack>
+            {/* SideBar Bottom */}
+            <div className='flex w-full justify-between items-center'>
+                {/* Total */}
+                <div className='uppercase font-semibold'>
+                    <span>Total:</span> N{parseFloat(total).toFixed(2)}
+                </div>
+                {/* Clear Cart */}
+                <div onClick={clearCart} className='cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl'>
+                    <FiTrash2 />
+                </div>
+            </div>
+            <Stack spacing={3} mt={5}>
+                <Link to="/cart" 
+                    className="bg-gray-200 rounded-3xl flex p-4 justify-center
+                                item-center text-primary w-ful font-medium">View Cart</Link>
+                <Link to="/checkout"
+                    className="btn-product text-center"
+                >Checkout</Link>
             </Stack>
         </div>
     );
